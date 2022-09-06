@@ -10,6 +10,9 @@
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 	<a href="https://wa.me/+541164890893" class="btn-wsp" target="_blank">
@@ -77,110 +80,50 @@ Gracias a la implementación de nuestros protocolos obtuvimos el certificado “
 Aquí abajo te acercamos toda la información.</p></div>
 
               </div>
-              <div class="row espacios centrado frase" id="imagen">
-                  <div class="col-md-3" >
-              	      <div class="card" >
-              	      	  <div class="pic" id="imagen">
-              	      	  	<i class="fa-solid fa-lightbulb"></i>
-              	      	  	<div class="content">
-              	      	  	<h4>Lugares</h4>
-              	      	  	<p>Las mejores experiencias</p>
-              	      	  	<a href="#" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  </div></div>
-                      </div>
-                 </div>
-                 <div class="col-md-3">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      		<i class="fa-solid fa-person-hiking"></i>
-													</div>
-													<div class="card-body">
-														<div class="content">
-															<h5>Actividades</h5>
-															<p>Las mejores experiencias</p>
-															<a href="" class="botondiv"><strong>Saber mas</strong></a>
-														</div>
-													</div>
-                      </div>
-                 </div>
-                 <div class="col-md-3 ">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      	   <i class="fa-regular fa-compass"></i>
-                            <div class="content">
-              	      	  	<h5>Como llegar</h5>
-              	      	  	<p>Las mejores experiencias</p>
-              	      	  	<a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  </div>
-              	      	  </div>
-                      </div>
-                 </div>
-                 <div class="col-md-3 ">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      		<i class="fa-solid fa-location-arrow"></i>
-              	      	  	<div class="content">
-              	      	  	<h5>AppStore</h5>
-              	      	  	<p>Las mejores experiencias</p>
-														<a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  	</div>
-              	      	  </div>
-   	      	           </div>
-                      </div>
 
+             
+			<div id="root"></div>
 
-              </div>
-              <div class="row centrado frase" id="imagen" >
-                  <div class="col-md-3">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      		<i class="fa-solid fa-wallet"></i>
-              	      	  	   <div class="content">
-              	      	  	     <h5>Trade</h5>
-              	      	  	     <p>Las mejores experiencias</p>
-              	      	  	     <a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	       </div>
-              	      	       </div>
-              	      </div>
-                      </div>
+			<script type="text/babel">
+				const infos = [
+					{title: 'Lugares', description: 'Las mejores experiencias', icon: 'lightbulb'},
+					{title: 'Actividades', description: 'Las mejores experiencias', icon: 'person-hiking'},
+					{title: 'Como llegar', description: 'Las mejores experiencias', icon: 'compass'},
+					{title: 'AppStore', description: 'Las mejores experiencias', icon: 'location-arrow'},
+					{title: 'Trade', description: 'Las mejores experiencias', icon: 'wallet'},
+					{title: 'Restaurantes', description: 'Las mejores experiencias', icon: 'utensils'},
+					{title: 'Descuento', description: 'Las mejores experiencias', icon: 'percent'},
+					{title: 'Malvinas', description: 'Las mejores experiencias', icon: 'monument'},
+				];
 
-                 <div class="col-md-3">
-              	      <div class="card">
-              	      	<div class="pic">
-                            <i class="fa-solid fa-utensils"></i>
-              	      	  	<div class="content">
-              	      	  	<h5>Restaurantes</h5>
-              	      	  	<p>Las mejores experiencias</p>
-              	      	  	<a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  </div>
-              	      	  </div>
-                      </div>
-                 </div>
-                 <div class="col-md-3">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      		<i class="fa-solid fa-percent"></i>
-              	      	  	<div class="content">
-              	      	  	<h5>Descuento</h5>
-              	      	  	<p>Las mejores experiencias</p>
-              	      	  	<a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  </div>
-              	      	  </div>
-                      </div>
-                 </div>
-                 <div class="col-md-3">
-              	      <div class="card">
-              	      	<div class="pic">
-              	      		<i class="fa-solid fa-monument"></i>
-              	      	  	<div class="content">
-              	      	  	<h5>Malvinas</h5>
-              	      	  	<p>Las mejores experiencias</p>
-              	      	  	<a href="" class="botondiv"><strong>Saber mas</strong></a>
-              	      	  </div>
-              	      	  </div>
-                      </div>
-                 </div>
-              </div>
+				class Card extends React.Component {
+					render() {
+					return <div className="col-md-3">
+						<div className="card">
+								<div className="pic" id="imagen">
+									<i className={"fa-solid fa-" + this.props.icon}></i>
+									<div className="content">
+									<h4>{this.props.title}</h4>
+									<p>{this.props.description}</p>
+									<a href="#" className="botondiv"><strong>Saber mas</strong></a>
+								</div></div>
+							</div>
+						</div>;
+					};
+				}
+			
+				ReactDOM.render(
+					<div class="row espacios centrado frase" id="imagen">
+						{
+							infos.map(function(info) {
+								return <Card title={info.title} description={info.description} icon={info.icon} />
+							})
+						}	
+					</div>,
+					document.getElementById('root'),
+				);
+			</script>
+
 	</div>
 
 </section>
